@@ -12,11 +12,23 @@ defaults:
     values:
       share: false # Sharing options at the bottom of the page
       related_posts: # Recommends related posts to read
+      
+# Jekyll picture tag settings
+picture:
+  source: "images"
+  output: "output"
+  markup: "picture"
+  presets:
+    default:
+      source_default:
+        width: "1024"
+        height: "256"
 
 # Jekyll configuration
 
 permalink:   /:categories/:title/
 markdown:    kramdown
+markdown:    redcarpet
 highlighter: rouge
 sass:
   sass_dir: _sass

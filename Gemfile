@@ -4,3 +4,8 @@ gem "jekyll", "~> 3.0"
 gem "jekyll-sitemap"
 gem "jekyll-gist"
 gem "octopress"
+
+group :jekyll_plugins do
+  gem 'jekyll-picture-tag'
+  gem 'redcarpet'
+end
