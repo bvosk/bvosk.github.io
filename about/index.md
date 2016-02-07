@@ -1,21 +1,18 @@
 ---
 layout: page
-title: What Is This?
+title: Welcome!
 tags: [about]
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: true
 ---
 
-This is my personal blog.
+Hey, I'm Brian. I'm an embedded systems engineer in upstate New York. This is my personal blog where I collect my thoughts.
 
-## Posts you may find here:
+## Software trends that interest me:
+* Design patterns in embedded systems
+* Test-driven development
+* Exciting new programming languages like [Elixir](http://elixir-lang.org/) and [Rust](https://www.rust-lang.org/)
+* Build automation tools like [Rake](http://rake.rubyforge.org/) and [Cargo](https://crates.io/)
 
-* Responsive templates. Looking good on mobile, tablet, and desktop.
-* Gracefully degrading in older browsers. Compatible with Internet Explorer 8+ and all modern browsers.
-* Minimal embellishments -- content first.
-* Optional large feature images for posts and pages.
-* Simple and clear permalink structure.
-* [Custom 404 page](http://mmistakes.github.io/minimal-mistakes/404.html) to get you started.
-* Support for Disqus Comments
-
-<a markdown="0" href="{{ site.url }}/theme-setup" class="btn">Install Minimal Mistakes Theme</a>
+## Still have questions?
+<a markdown="0" href="mailto:{{ site.owner.email }}" class="btn btn-info">Send me an email</a>
