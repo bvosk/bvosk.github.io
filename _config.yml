@@ -1,6 +1,6 @@
 # Site wide configuration
 
-title:            Brian's Blog
+title:            bvosk.xyz
 locale:           en_US
 
 # Front Matter Defaults
@@ -62,7 +62,7 @@ titlecase: true
 owner:
   name: Brian Voskerijian
   avatar: # https://s.gravatar.com/avatar/529a242ab572a52ba6d39290a941c1c3?s=80
-  bio: "Professional engineer... wannabe economist, historian, and political pundit."
+  bio: "Professional engineer. Wannabe economist, historian, and political pundit."
   email: brian@bvosk.xyz
   disqus-shortname:
   twitter: #username
