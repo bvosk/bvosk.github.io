@@ -2,4 +2,10 @@
 layout: {{ layout }}
 title: "{{ title }}"
 date: {{ date }}
+modified:
+categories: {{ dir }}
+excerpt:
+tags: []
+image:
+  feature:
 ---
