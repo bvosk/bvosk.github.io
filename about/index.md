@@ -13,7 +13,7 @@ Hi, I'm Brian. I'm an embedded systems engineer in upstate New York. This is my 
 * Design patterns in embedded systems
 * Test-driven development
 * Exciting new programming languages like [Elixir](http://elixir-lang.org/) and [Rust](https://www.rust-lang.org/)
-* Build automation tools like [Rake](http://rake.rubyforge.org/) and [Cargo](https://crates.io/)
+* Build automation tools like [Make](https://www.gnu.org/software/make/) and [Rake](http://rake.rubyforge.org/)
 
 ## Other things you may find here:
 * Thoughts on current events
