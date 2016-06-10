@@ -5,14 +5,14 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Init &#8211; On Ice</title>
-<meta name="description" content="Why I started a blog">
-<meta name="keywords" content="">
+<title>Nerves &#8211; On Ice</title>
+<meta name="description" content="Let's take a look at Nerves">
+<meta name="keywords" content="nerves, elixir, ubuntu">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Init">
-<meta name="twitter:description" content="Why I started a blog">
+<meta name="twitter:title" content="Nerves">
+<meta name="twitter:description" content="Let's take a look at Nerves">
 
 
 
@@ -22,9 +22,9 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Init">
-<meta property="og:description" content="Why I started a blog">
-<meta property="og:url" content="/init/">
+<meta property="og:title" content="Nerves">
+<meta property="og:description" content="Let's take a look at Nerves">
+<meta property="og:url" content="/getting-started-with-nerves/">
 <meta property="og:site_name" content="On Ice">
 
 <meta property="og:image" content="/images/default-thumb.png">
@@ -34,7 +34,7 @@
 
 
 
-<link rel="canonical" href="/init/">
+<link rel="canonical" href="/getting-started-with-nerves/">
 <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="On Ice Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -135,36 +135,40 @@
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="/init/" rel="bookmark" title="Init">Init</a></h1>
+        <h1><a href="/getting-started-with-nerves/" rel="bookmark" title="Nerves">Nerves</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>Today I started a blog. Here’s why:</p>
+      <p><a href="http://nerves-project.org/">Nerves</a> is a way to build embedded Linux systems using the <a href="http://elixir-lang.org/">Elixir</a> programming language. I’ve decided to try it out and I’ll be chronicling my experience with it here. I’m not sure where we’re going or how</p>
 
-<h2 id="all-the-cool-kids-are-doing-it">All the cool kids are doing it</h2>
-<p>One reason I finally have the nerve to start a blog is that I see so many others doing it successfully. Personal blogs have become an important part of my daily diet and I find myself increasingly reliant on posts from helpful strangers. I’m jumping into the discussion. Maybe with a little luck I can help someone too.</p>
+<h1 id="why-nerves">Why Nerves?</h1>
 
-<h2 id="youre-my-rubber-duck">You’re my rubber duck</h2>
-<p>The phrase <a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging">rubber duck debugging</a> is often used in programming. It refers to the practice of troubleshooting your code by explaining it step-by-step. The rubber duck part of it emphasizes that it doesn’t matter if you’re talking to a genius or a rubber duck. What’s important is that you take the time to compile your thoughts and explain whatever it is you’re having trouble with. Nine times out of ten you realize how to solve the problem before you can finish your explanation.</p>
+<p>I’m excited about Nerves because it combines a lot of things I’m interested in: Embedded Linux, Elixir, and <a href="http://www.erlang.org/">Erlang</a>!</p>
 
-<p>This blog is a playground for me to experiment. And you are my rubber duck.</p>
+<h2 id="embedded-linux">Embedded Linux</h2>
 
-<h2 id="feedback">Feedback</h2>
-<p>Rubber ducks are great, but what if they could talk back? Then we’d have a feedback loop. That’s what allows a robot to do things like this:</p>
+<p>I got a Raspberry Pi for Christmas and it’s been gathering dust since then. I’ve worked on a variety of embedded systems, but never touched embedded Linux. Embedded Linux is cool because it’s a happy medium between a bare-metal embedded software and a full blown desktop PC. You get a taste of both worlds!</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cyN-CRNrb3E" frameborder="0" allowfullscreen=""></iframe>
-<p><br /></p>
+<h2 id="elixir">Elixir</h2>
 
-<p>Feedback can help humans achieve greatness too! And it just so happens that my rubber duck <em>can</em> talk back. Please do.</p>
+<p>Elixir is a <a href="https://en.wikipedia.org/wiki/Functional_programming">functional</a> programming language, a far cry from the <a href="https://en.wikipedia.org/wiki/Imperative_programming">imperative</a> approach of traditional C. While the handful of functional programming languages are far from mainstream, a variety of functional concepts are leaking into more traditional programming languages (like C++ and JavaScript) and leaving their mark on the ever-evolving doctrine how to create quality software. I have to try out some functional programming.</p>
 
-<p>Challenge me. Tell me why I’m wrong. Berate me about that typo that doesn’t just suggest carelessness, but a gross misunderstanding of the English language. And if I ever get something right, chime in and tell me why you agree.</p>
+<h2 id="erlang">Erlang</h2>
+
+<p>Elixir inherits a lot of concepts from Erlang and runs atop on the same virtual machine (BEAM). Erlang is known for its ability to produce highly concurrent, robust systems. These concepts are of growing importance to the embedded systems world and the software world at large. Erlang accomplishes this by handling concurrency itself instead of delegating those duties to an operating system. Distributed, fault tolerant systems are realized through Erlang’s model for independent processes with isolated memory, asynchronous message passing, and error containment. If it sounds confusing, that’s probably because I don’t understand it.</p>
+
+<h1 id="what-are-we-going-to-build-with-nerves">What are we going to build with Nerves?</h1>
+
+<p>I haven’t figured that out yet. If you have any ideas, let me know!</p>
 
       <hr />
       <footer role="contentinfo">
         
-        <p class="byline"><strong>Init</strong> was published on <time datetime="2016-02-08T21:00:11-05:00">February 08, 2016</time>.</p>
+        <p class="byline"><strong>Nerves</strong> was published on <time datetime="2016-06-07T21:42:54-04:00">June 07, 2016</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
+  
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
   
   </article>
 </div><!-- /#main -->
@@ -178,6 +182,30 @@
 <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'bvosk'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
 
