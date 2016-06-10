@@ -11,7 +11,7 @@ defaults:
     values:
       share: false # Sharing options at the bottom of the page
       related_posts: # Recommends related posts to read
-      
+
 # Jekyll picture tag settings
 picture:
   source: "images"
@@ -64,7 +64,7 @@ owner:
   avatar: # https://s.gravatar.com/avatar/529a242ab572a52ba6d39290a941c1c3?s=80
   bio: ""
   email: brian@bvosk.xyz
-  disqus-shortname: brian
+  disqus-shortname: bvosk
   twitter: #username
   facebook: #username
   google:
