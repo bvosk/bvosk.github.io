@@ -4,8 +4,8 @@ title: "Nerves Blinky"
 date: 2016-06-09T20:55:15-04:00
 modified:
 categories:
-excerpt:
-tags: []
+excerpt: Blinking an LED on the Raspberry Pi with Nerves
+tags: [raspberry pi, blinky, nerves, elixir]
 image:
   feature:
 ---
