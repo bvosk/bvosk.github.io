@@ -6,6 +6,7 @@ modified:
 categories:
 excerpt: Blinking an LED on the Raspberry Pi with Nerves
 tags: [raspberry pi, blinky, nerves, elixir]
+comments: true
 image:
   feature:
 ---
@@ -19,7 +20,7 @@ Following along with the [Nerves installation page](https://hexdocs.pm/nerves/in
 - [Elixir](http://elixir-lang.org/) - The programming language we'll be using
 - [Erlang](http://www.erlang.org/) - The development platform on which Elixir runs
 - [Hex](https://hex.pm/) - Erlang's package manager
-- [Rebar](https://github.com/erlang/rebar3) - A tol used to create Erlang applications
+- [Rebar](https://github.com/erlang/rebar3) - A tool used to create Erlang applications
 - [fwup](https://github.com/fhunleth/fwup) - A firmware update utility for embedded Linux systems
 - [gstat](http://manpages.ubuntu.com/manpages/wily/man1/gstat.1.html) - Used in Nerves scripts
 - [squashfs-tools](http://packages.ubuntu.com/trusty/squashfs-tools) - Used in Nerves scripts
@@ -32,16 +33,16 @@ We'll follow the [Elixir installation instructions](http://elixir-lang.org/insta
 $ # Add the Erlang Solutions repository
 $ wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb
 $ sudo apt-get update
-$ sudo apt-get install esl-erlang       # Install Erlang
-$ sudo apt-get install elixir           # Install Elixir
+$ sudo apt-get install esl-erlang  # Install Erlang
+$ sudo apt-get install elixir      # Install Elixir
 ```
 
 ## Install Hex & Rebar
 Install Hex by using the `Mix` build tool that comes with Elixir.
 
 ```bash
-$ mix local.hex                         # Install Hex
-$ mix local.rebar                       # Install Rebar
+$ mix local.hex    # Install Hex
+$ mix local.rebar  # Install Rebar
 ```
 
 ## Install fwup
@@ -56,7 +57,7 @@ $ sudo apt-get install squashfs-tools   # Install squashfs-tools
 ```
 
 ## Install nerves_bootstrap
-Last we install the nerves_bootstrap archive using `Mix`
+Last we install the nerves_bootstrap archive using `Mix`.
 
 ```bash
 $ mix archive.install https://github.com/nerves-project/archives/raw/master/nerves_bootstrap.ez
