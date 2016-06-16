@@ -12,8 +12,8 @@ Hi, I'm Brian. I'm an embedded systems engineer in upstate New York. This is my 
 ## Software trends that interest me:
 * Design patterns in embedded systems
 * Test-driven development
-* Exciting new programming languages like [Elixir](http://elixir-lang.org/) and [Rust](https://www.rust-lang.org/)
-* Build automation tools like [Make](https://www.gnu.org/software/make/) and [Rake](http://rake.rubyforge.org/)
+* New programming languages like [Elixir](http://elixir-lang.org/) and [Rust](https://www.rust-lang.org/)
+* Build automation tools like [Make](https://www.gnu.org/software/make/)
 
 ## Other things you may find here:
 * Thoughts on current events
