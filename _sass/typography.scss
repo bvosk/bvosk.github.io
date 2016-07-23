@@ -123,6 +123,7 @@ blockquote {
 	ol, li, p {
 		margin-bottom: 0;
 		@include font-rem(14);
+		line-height: 15px;
 	}
 }
 
