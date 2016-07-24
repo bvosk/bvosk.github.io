@@ -1,0 +1,320 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>From C to Elixir &#8211; On Ice</title>
+<meta name="description" content="Observations about Elixir through the lens of a C programmer">
+<meta name="keywords" content="elixir">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="From C to Elixir">
+<meta name="twitter:description" content="Observations about Elixir through the lens of a C programmer">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="From C to Elixir">
+<meta property="og:description" content="Observations about Elixir through the lens of a C programmer">
+<meta property="og:url" content="/elixir/">
+<meta property="og:site_name" content="On Ice">
+
+<meta property="og:image" content="/images/default-thumb.png">
+
+
+
+
+
+
+<link rel="canonical" href="/elixir/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="On Ice Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<img class="logo-image" src="../images/logo.png" height="25" width="25">
+		<a href="/">On Ice</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="/about/" >About</a></li>
+				
+				    
+				    <li><a href="/posts/" >All Posts</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+
+  <h3 itemprop="name">Brian Voskerijian</h3>
+  <p></p>
+  <a href="mailto:brian@bvosk.xyz" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://github.com/bvosk" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="/elixir/" rel="bookmark" title="From C to Elixir">From C to Elixir</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p>Since my last post I’ve been playing around with <a href="http://elixir-lang.org/">Elixir</a>. If you’re interested in learning about it, I recommend starting with the <a href="http://elixir-lang.org/getting-started/introduction.html">official getting started guide</a>.</p>
+
+<p>Before we dive into some things I found interesting about Elixir, let’s
+discuss the most notable differences between Elixir and C:</p>
+
+<ol>
+  <li>
+    <p>Elixir is new</p>
+
+    <p>Elixir 1.0 was released in 2014. C was doing some heavy lifting as early as
+1972<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>.
+As one would expect, the decades following the birth of C have afforded Elixir 
+with the new ideas, successes, and failures of countless programming languages.
+While this is important to keep in mind, it’s difficult to isolate this
+difference from the rest. I mention this mainly to give a tip of the hat to C
+before I say some not-so-nice things about it.</p>
+  </li>
+</ol>
+
+<ol>
+  <li>
+    <p>Elixir is functional</p>
+
+    <p>Functional programming makes the developer think differently about how to
+accomplish the task at hand. I want to focus on this because I think it’s the
+most interesting divergence from C, which takes an imperative approach.</p>
+  </li>
+  <li>
+    <p>Elixir is dynamically typed</p>
+
+    <p>Dynamically typed languages are probably familiar to most at this point,
+popularized by the rise of scripting languages like Python, JavaScript, and
+Ruby. A C programmer will find this liberating, but at times dangerously
+so. Not unlike a college freshman who finds herself free at last from the supervision
+of her parents. At some point she realizes - perhaps while keeled over a garbage 
+can - that they’re usually right.</p>
+  </li>
+</ol>
+
+<h2 id="immutable-data-and-purity">Immutable Data and Purity</h2>
+
+<p>All data is immutable in Elixir. In other words, a variable’s value cannot
+change once it is assigned cannot change. Check it out:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">iex</span><span class="o">&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="sd">"</span><span class="s2">brian"</span>
+<span class="sd">"</span><span class="s2">brian"</span>
+<span class="n">iex</span><span class="o">&gt;</span> <span class="no">String</span><span class="o">.</span><span class="n">upcase</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="sd">"</span><span class="s2">BRIAN"</span>
+<span class="n">iex</span><span class="o">&gt;</span> <span class="n">name</span>
+<span class="sd">"</span><span class="s2">brian"</span>
+</code></pre>
+</div>
+
+<p>This is puzzling if you’re used to C. Didn’t we make <code class="highlighter-rouge">name</code> uppercase? No, we
+didn’t. We performed a transformation on <code class="highlighter-rouge">name</code> which resulted in a new string.
+The new string is a clone of <code class="highlighter-rouge">name</code>, except uppercase. It’s a subtle, but
+important difference.</p>
+
+<p>This behavior is typical in functional programming. Immutable
+data structures give rise to <em>pure</em> functions - so named because they are
+incapable of <em>tainting</em> the arguments passed to them. In a pure, functional
+language like Elixir, you never have to worry if a function will manipulate a
+variable you pass to it. This has the neat effect of making the
+code easier to conceptualize as well as easier to test.</p>
+
+<p>To demonstrate this point, take a look at this C code:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">char</span> <span class="n">name</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"brian"</span><span class="p">;</span>
+<span class="n">some_function</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"Hello, %s!"</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>What’s the value of <code class="highlighter-rouge">name</code> after we call <code class="highlighter-rouge">some_function</code> on it? The only correct answer here is, “Who knows?” The developer is forced to go lookup the details of <code class="highlighter-rouge">some_function</code> to find out if it manipulates <code class="highlighter-rouge">name</code>.</p>
+
+<h2 id="data-transformations">Data Transformations</h2>
+
+<p>Functional programming offers a different perspective about what a program
+ought to do. Let’s take a look at take a look at three programming paradigms and
+try to boil their philosophies down to a single sentence:</p>
+
+<ul>
+  <li><strong>Imperative</strong>: <em>Programs execute commands</em></li>
+  <li><strong>Object-Oriented</strong>: <em>Programs manipulate objects</em></li>
+  <li><strong>Functional</strong>: <em>Programs transform data</em></li>
+</ul>
+
+<p>So Elixir - taking a functional approach - touts data transformation, but all
+data is immutable. After the first example, you may be thinking that creating copies of data can
+get syntactically cumbersome. I’d agree. One can imagine countless lines of code that look like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function3(function2(function3(data)))
+</code></pre>
+</div>
+
+<p>And indeed this is valid Elixir:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">iex</span><span class="o">&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="sd">"</span><span class="s2">one two three"</span>
+<span class="sd">"</span><span class="s2">one two three"</span>
+<span class="n">iex</span><span class="o">&gt;</span> <span class="no">Enum</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">String</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">numbers</span><span class="p">),</span> <span class="sd">"</span><span class="s2">+"</span><span class="p">)</span>
+<span class="sd">"</span><span class="s2">one+two+three"</span>
+</code></pre>
+</div>
+
+<p>But there’s a better way. To support the precepts of functional programming while maintaining readability, Elixir provides special syntax to perform data transformations. Here’s the same code using Elixir’s pipe operator, <code class="highlighter-rouge">|&gt;</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">iex</span><span class="o">&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="sd">"</span><span class="s2">one two three"</span>
+<span class="sd">"</span><span class="s2">one two three"</span>
+<span class="n">iex</span><span class="o">&gt;</span> <span class="n">numbers</span> <span class="o">|&gt;</span> <span class="no">String</span><span class="o">.</span><span class="n">split</span> <span class="o">|&gt;</span> <span class="no">Enum</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sd">"</span><span class="s2">+"</span><span class="p">)</span>
+<span class="sd">"</span><span class="s2">one+two+three"</span>
+</code></pre>
+</div>
+
+<p>That’s better! The pipe operator simply passes the return value of the
+left function as the first argument to right function. In this way, functions
+can be chained together endlessly and read naturally from left to right in the
+order that they’re applied.</p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>There’s a little more to this. <a href="https://en.wikipedia.org/wiki/C_(programming_language)#History">According to Wikipedia</a>, C was being used to develop Unix in 1972 and the famous K&amp;R book was published in 1978. It wasn’t until 1989 that C was formally standardized as ANSI C, but it would be disingenuous to suggest that its use wasn’t already widespread at that time. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+      <hr />
+      <footer role="contentinfo">
+        
+        <p class="byline"><strong>From C to Elixir</strong> was published on <time datetime="2016-07-23T00:00:00-04:00">July 23, 2016</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
+  
+  </article>
+</div><!-- /#main -->
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+<!-- Add MathJax -->
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'bvosk'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+</body>
+</html>

@@ -4,13 +4,155 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2016-06-16T23:10:43-04:00</updated>
+<updated>2016-07-24T16:04:24-04:00</updated>
 <id>/</id>
 <author>
   <name>Brian Voskerijian</name>
   <uri>/</uri>
   <email>brian@bvosk.xyz</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[From C to Elixir]]></title>
+  <link rel="alternate" type="text/html" href="/elixir/" />
+  <id>/elixir</id>
+  <published>2016-07-23T00:00:00-04:00</published>
+  <updated>2016-07-23T00:00:00-04:00</updated>
+  <author>
+    <name>Brian Voskerijian</name>
+    <uri></uri>
+    <email>brian@bvosk.xyz</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Since my last post I’ve been playing around with &lt;a href=&quot;http://elixir-lang.org/&quot;&gt;Elixir&lt;/a&gt;. If you’re interested in learning about it, I recommend starting with the &lt;a href=&quot;http://elixir-lang.org/getting-started/introduction.html&quot;&gt;official getting started guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Before we dive into some things I found interesting about Elixir, let’s
+discuss the most notable differences between Elixir and C:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Elixir is new&lt;/p&gt;
+
+    &lt;p&gt;Elixir 1.0 was released in 2014. C was doing some heavy lifting as early as
+1972&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.
+As one would expect, the decades following the birth of C have afforded Elixir 
+with the new ideas, successes, and failures of countless programming languages.
+While this is important to keep in mind, it’s difficult to isolate this
+difference from the rest. I mention this mainly to give a tip of the hat to C
+before I say some not-so-nice things about it.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Elixir is functional&lt;/p&gt;
+
+    &lt;p&gt;Functional programming makes the developer think differently about how to
+accomplish the task at hand. I want to focus on this because I think it’s the
+most interesting divergence from C, which takes an imperative approach.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Elixir is dynamically typed&lt;/p&gt;
+
+    &lt;p&gt;Dynamically typed languages are probably familiar to most at this point,
+popularized by the rise of scripting languages like Python, JavaScript, and
+Ruby. A C programmer will find this liberating, but at times dangerously
+so. Not unlike a college freshman who finds herself free at last from the supervision
+of her parents. At some point she realizes - perhaps while keeled over a garbage 
+can - that they’re usually right.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;immutable-data-and-purity&quot;&gt;Immutable Data and Purity&lt;/h2&gt;
+
+&lt;p&gt;All data is immutable in Elixir. In other words, a variable’s value cannot
+change once it is assigned cannot change. Check it out:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;brian&quot;&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;brian&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;upcase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;BRIAN&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;brian&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is puzzling if you’re used to C. Didn’t we make &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; uppercase? No, we
+didn’t. We performed a transformation on &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; which resulted in a new string.
+The new string is a clone of &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;, except uppercase. It’s a subtle, but
+important difference.&lt;/p&gt;
+
+&lt;p&gt;This behavior is typical in functional programming. Immutable
+data structures give rise to &lt;em&gt;pure&lt;/em&gt; functions - so named because they are
+incapable of &lt;em&gt;tainting&lt;/em&gt; the arguments passed to them. In a pure, functional
+language like Elixir, you never have to worry if a function will manipulate a
+variable you pass to it. This has the neat effect of making the
+code easier to conceptualize as well as easier to test.&lt;/p&gt;
+
+&lt;p&gt;To demonstrate this point, take a look at this C code:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;brian&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;some_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello, %s!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;What’s the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; after we call &lt;code class=&quot;highlighter-rouge&quot;&gt;some_function&lt;/code&gt; on it? The only correct answer here is, “Who knows?” The developer is forced to go lookup the details of &lt;code class=&quot;highlighter-rouge&quot;&gt;some_function&lt;/code&gt; to find out if it manipulates &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;data-transformations&quot;&gt;Data Transformations&lt;/h2&gt;
+
+&lt;p&gt;Functional programming offers a different perspective about what a program
+ought to do. Let’s take a look at take a look at three programming paradigms and
+try to boil their philosophies down to a single sentence:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Imperative&lt;/strong&gt;: &lt;em&gt;Programs execute commands&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Object-Oriented&lt;/strong&gt;: &lt;em&gt;Programs manipulate objects&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Functional&lt;/strong&gt;: &lt;em&gt;Programs transform data&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So Elixir - taking a functional approach - touts data transformation, but all
+data is immutable. After the first example, you may be thinking that creating copies of data can
+get syntactically cumbersome. I’d agree. One can imagine countless lines of code that look like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function3(function2(function3(data)))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And indeed this is valid Elixir:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;one two three&quot;&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;one two three&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;one+two+three&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;But there’s a better way. To support the precepts of functional programming while maintaining readability, Elixir provides special syntax to perform data transformations. Here’s the same code using Elixir’s pipe operator, &lt;code class=&quot;highlighter-rouge&quot;&gt;|&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;one two three&quot;&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;one two three&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;one+two+three&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That’s better! The pipe operator simply passes the return value of the
+left function as the first argument to right function. In this way, functions
+can be chained together endlessly and read naturally from left to right in the
+order that they’re applied.&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;There’s a little more to this. &lt;a href=&quot;https://en.wikipedia.org/wiki/C_(programming_language)#History&quot;&gt;According to Wikipedia&lt;/a&gt;, C was being used to develop Unix in 1972 and the famous K&amp;amp;R book was published in 1978. It wasn’t until 1989 that C was formally standardized as ANSI C, but it would be disingenuous to suggest that its use wasn’t already widespread at that time. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+
+    &lt;p&gt;&lt;a href=&quot;/elixir/&quot;&gt;From C to Elixir&lt;/a&gt; was originally published by Brian Voskerijian at &lt;a href=&quot;&quot;&gt;On Ice&lt;/a&gt; on July 23, 2016.&lt;/p&gt;
+  </content>
+</entry>
 
 
 <entry>
@@ -39,7 +181,7 @@
 
 &lt;h2 id=&quot;erlang&quot;&gt;Erlang&lt;/h2&gt;
 
-&lt;p&gt;Elixir inherits a lot of concepts from Erlang and runs atop the same virtual machine (BEAM). Erlang is known for its ability to produce highly concurrent, robust systems. These concepts are of growing importance to the embedded systems world, and the software world at large. Erlang accomplishes this by handling concurrency itself instead of delegating those duties to an operating system. Distributed, fault tolerant systems are realized through Erlang’s model for independent processes with isolated memory, asynchronous message passing, and error containment. If it sounds confusing, that’s probably because I don’t understand it all that well.&lt;/p&gt;
+&lt;p&gt;Elixir inherits a lot of concepts from Erlang and runs atop the same virtual machine (BEAM). Erlang is known for its ability to produce highly concurrent, robust systems. These concepts are of growing importance to the embedded systems world, and the software world at large. Erlang accomplishes this by handling concurrency itself instead of delegating those duties to an operating system. Distributed, fault tolerant systems are realized through Erlang’s model for independent processes with isolated memory, asynchronous message passing, and error containment. If it sounds confusing, that’s probably because I don’t understand it all that well…yet.&lt;/p&gt;
 
 &lt;h1 id=&quot;what-are-we-going-to-build-with-nerves&quot;&gt;What are we going to build with Nerves?&lt;/h1&gt;
 
