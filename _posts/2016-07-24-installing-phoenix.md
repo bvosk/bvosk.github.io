@@ -39,8 +39,8 @@ Since I'm on Ubuntu, I'll follow [these
 instructions](https://Nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions) for Node.js v6:
 
 ```bash
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-sudo apt-get install -y nodejs
+$ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+$ sudo apt-get install -y nodejs
 ```
 
 #### Install PostgreSQL
@@ -71,7 +71,7 @@ $ cd hello
 ## Create an Ecto repo
 
 ```bash
-mix ecto.create
+$ mix ecto.create
 ```
 
 This step gave me some trouble. I received this output:
@@ -98,7 +98,7 @@ in your postgreSQL configuration[^1]. Do this:
 
 ```bash
 # Start the psql terminal
-sudo -u postgres psql
+$ sudo -u postgres psql
 
 psql (9.3.13)
 Type "help" for help.
@@ -110,7 +110,7 @@ postgres=# ALTER USER postgres WITH SUPERUSER;
 ## Start the Phoenix application
 
 ```bash
-mix phoenix.server
+$ mix phoenix.server
 ```
 
 If everything went well, you should see the default Phoenix landing page:
