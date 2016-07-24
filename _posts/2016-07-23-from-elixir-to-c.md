@@ -22,7 +22,7 @@ While this is important to keep in mind, it's difficult to isolate this
 difference from the rest. I mention this mainly to give a tip of the hat to C
 before I say some not-so-nice things about it.
 
-[^1]: There's a little more to this. [According to Wikipedia](https://en.wikipedia.org/wiki/C_(programming_language)#History), C was being used to develop Unix in 1972 and the famous K&R book was published in 1978. It wasn't until 1989 that C was formally standardized as ANSI C, but it would be disingenuous to suggest that its use wasn't already widespread at that time.
+    [^1]: There's a little more to this. [According to Wikipedia](https://en.wikipedia.org/wiki/C_(programming_language)#History), C was being used to develop Unix in 1972 and the famous K&R book was published in 1978. It wasn't until 1989 that C was formally standardized as ANSI C, but it would be disingenuous to suggest that its use wasn't already widespread at that time.
 
 2. Elixir is functional
 
