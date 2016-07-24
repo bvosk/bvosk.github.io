@@ -4,13 +4,143 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2016-07-24T16:17:22-04:00</updated>
+<updated>2016-07-24T19:39:26-04:00</updated>
 <id>/</id>
 <author>
   <name>Brian Voskerijian</name>
   <uri>/</uri>
   <email>brian@bvosk.xyz</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Installing Phoenix]]></title>
+  <link rel="alternate" type="text/html" href="/installing-phoenix/" />
+  <id>/installing-phoenix</id>
+  <published>2016-07-24T17:08:06-04:00</published>
+  <updated>2016-07-24T17:08:06-04:00</updated>
+  <author>
+    <name>Brian Voskerijian</name>
+    <uri></uri>
+    <email>brian@bvosk.xyz</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;I’m documenting my experience installing Phoenix on Ubuntu 14.04 in the hopes
+that I can help others avoid some problems I ran into. I’ll be brief
+when the &lt;a href=&quot;http://www.phoenixframework.org/docs/installation&quot;&gt;official documentation&lt;/a&gt;
+serves me well. When the documentation leaves me confused, I’ll explain what I
+did to resolve the issues.&lt;/p&gt;
+
+&lt;h2 id=&quot;install-dependencies&quot;&gt;Install dependencies&lt;/h2&gt;
+
+&lt;h4 id=&quot;install-elixir--erlang&quot;&gt;Install Elixir &amp;amp; Erlang&lt;/h4&gt;
+
+&lt;p&gt;Follow the &lt;a href=&quot;http://elixir-lang.org/install.html&quot;&gt;Elixir installation guide&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;install-hex&quot;&gt;Install Hex&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mix local.hex
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;install-nodejs&quot;&gt;Install Node.js&lt;/h4&gt;
+
+&lt;p&gt;Follow the &lt;a href=&quot;https://nodejs.org/en/download/&quot;&gt;Node.js download page&lt;/a&gt;. &lt;strong&gt;Note that
+you need to install Node.js &amp;gt;= 5.0.0&lt;/strong&gt;. This is specified in the
+Phoenix installation guide, but I missed it in my first pass.&lt;/p&gt;
+
+&lt;p&gt;Since I’m on Ubuntu, I’ll follow &lt;a href=&quot;https://Nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions&quot;&gt;these
+instructions&lt;/a&gt; for Node.js v6:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;install-postgresql&quot;&gt;Install PostgreSQL&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;sudo apt-get install postgresql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;install-inotify-tools&quot;&gt;Install inotify-tools&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;sudo apt-get install inotify-tools
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;install-phoenix&quot;&gt;Install Phoenix&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;create-a-project&quot;&gt;Create a project&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mix phoenix.new hello
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;hello
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;create-an-ecto-repo&quot;&gt;Create an Ecto repo&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mix ecto.create
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This step gave me some trouble. I received this output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;** (Mix) The database for Hello.Repo couldn&#39;t be created: FATAL
+(invalid_password): password authentication failed for user &quot;postgres&quot;
+16:35:22.980 [error] GenServer #PID&amp;lt;0.147.0&amp;gt; terminating
+** (Postgrex.Error) FATAL (invalid_password): password authentication failed for
+user &quot;postgres&quot;
+    (db_connection) lib/db_connection/connection.ex:148:
+DBConnection.Connection.connect/2
+    (connection) lib/connection.ex:623: Connection.enter_connect/5
+    (stdlib) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+Last message: nil
+State: Postgrex.Protocol
+You may also need to alter your postgreSQL configuration to ensure it works
+with Ecto. I had to alter the postgres user. You can do this using the `psql` 
+terminal:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If you get something similar, you may have to alter the postgres user password
+in your postgreSQL configuration&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Do this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Start the psql terminal&lt;/span&gt;
+sudo -u postgres psql
+
+psql &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;9.3.13&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Type &lt;span class=&quot;s2&quot;&gt;&quot;help&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;help.
+
+&lt;span class=&quot;gp&quot;&gt;postgres=# &lt;/span&gt;ALTER USER postgres PASSWORD &lt;span class=&quot;s1&quot;&gt;&#39;postgres&#39;&lt;/span&gt;;
+&lt;span class=&quot;gp&quot;&gt;postgres=# &lt;/span&gt;ALTER USER postgres WITH SUPERUSER;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;start-the-phoenix-application&quot;&gt;Start the Phoenix application&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mix phoenix.server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If everything went well, you should see the default Phoenix landing page:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/phoenix-landing-page.png&quot; height=&quot;250&quot; width=&quot;350&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;More info here: &lt;a href=&quot;http://www.phoenixframework.org/docs/ecto-models&quot;&gt;http://www.phoenixframework.org/docs/ecto-models&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+
+    &lt;p&gt;&lt;a href=&quot;/installing-phoenix/&quot;&gt;Installing Phoenix&lt;/a&gt; was originally published by Brian Voskerijian at &lt;a href=&quot;&quot;&gt;On Ice&lt;/a&gt; on July 24, 2016.&lt;/p&gt;
+  </content>
+</entry>
 
 
 <entry>

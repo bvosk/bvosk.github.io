@@ -1,0 +1,308 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Installing Phoenix &#8211; On Ice</title>
+<meta name="description" content="A guide for installing Phoenix on Ubuntu">
+<meta name="keywords" content="elixir, phoenix">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Installing Phoenix">
+<meta name="twitter:description" content="A guide for installing Phoenix on Ubuntu">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Installing Phoenix">
+<meta property="og:description" content="A guide for installing Phoenix on Ubuntu">
+<meta property="og:url" content="/installing-phoenix/">
+<meta property="og:site_name" content="On Ice">
+
+<meta property="og:image" content="/images/default-thumb.png">
+
+
+
+
+
+
+<link rel="canonical" href="/installing-phoenix/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="On Ice Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<img class="logo-image" src="../images/logo.png" height="25" width="25">
+		<a href="/">On Ice</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="/about/" >About</a></li>
+				
+				    
+				    <li><a href="/posts/" >All Posts</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+
+  <h3 itemprop="name">Brian Voskerijian</h3>
+  <p></p>
+  <a href="mailto:brian@bvosk.xyz" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://github.com/bvosk" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="/installing-phoenix/" rel="bookmark" title="Installing Phoenix">Installing Phoenix</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p>I’m documenting my experience installing Phoenix on Ubuntu 14.04 in the hopes
+that I can help others avoid some problems I ran into. I’ll be brief
+when the <a href="http://www.phoenixframework.org/docs/installation">official documentation</a>
+serves me well. When the documentation leaves me confused, I’ll explain what I
+did to resolve the issues.</p>
+
+<h2 id="install-dependencies">Install dependencies</h2>
+
+<h4 id="install-elixir--erlang">Install Elixir &amp; Erlang</h4>
+
+<p>Follow the <a href="http://elixir-lang.org/install.html">Elixir installation guide</a></p>
+
+<h4 id="install-hex">Install Hex</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mix local.hex
+</code></pre>
+</div>
+
+<h4 id="install-nodejs">Install Node.js</h4>
+
+<p>Follow the <a href="https://nodejs.org/en/download/">Node.js download page</a>. <strong>Note that
+you need to install Node.js &gt;= 5.0.0</strong>. This is specified in the
+Phoenix installation guide, but I missed it in my first pass.</p>
+
+<p>Since I’m on Ubuntu, I’ll follow <a href="https://Nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions">these
+instructions</a> for Node.js v6:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+</code></pre>
+</div>
+
+<h4 id="install-postgresql">Install PostgreSQL</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install postgresql
+</code></pre>
+</div>
+
+<h4 id="install-inotify-tools">Install inotify-tools</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install inotify-tools
+</code></pre>
+</div>
+
+<h2 id="install-phoenix">Install Phoenix</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
+</code></pre>
+</div>
+
+<h2 id="create-a-project">Create a project</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mix phoenix.new hello
+<span class="gp">$ </span><span class="nb">cd </span>hello
+</code></pre>
+</div>
+
+<h2 id="create-an-ecto-repo">Create an Ecto repo</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mix ecto.create
+</code></pre>
+</div>
+
+<p>This step gave me some trouble. I received this output:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>** (Mix) The database for Hello.Repo couldn't be created: FATAL
+(invalid_password): password authentication failed for user "postgres"
+16:35:22.980 [error] GenServer #PID&lt;0.147.0&gt; terminating
+** (Postgrex.Error) FATAL (invalid_password): password authentication failed for
+user "postgres"
+    (db_connection) lib/db_connection/connection.ex:148:
+DBConnection.Connection.connect/2
+    (connection) lib/connection.ex:623: Connection.enter_connect/5
+    (stdlib) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+Last message: nil
+State: Postgrex.Protocol
+You may also need to alter your postgreSQL configuration to ensure it works
+with Ecto. I had to alter the postgres user. You can do this using the `psql` 
+terminal:
+</code></pre>
+</div>
+
+<p>If you get something similar, you may have to alter the postgres user password
+in your postgreSQL configuration<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. Do this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># Start the psql terminal</span>
+sudo -u postgres psql
+
+psql <span class="o">(</span>9.3.13<span class="o">)</span>
+Type <span class="s2">"help"</span> <span class="k">for </span>help.
+
+<span class="gp">postgres=# </span>ALTER USER postgres PASSWORD <span class="s1">'postgres'</span>;
+<span class="gp">postgres=# </span>ALTER USER postgres WITH SUPERUSER;
+</code></pre>
+</div>
+
+<h2 id="start-the-phoenix-application">Start the Phoenix application</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mix phoenix.server
+</code></pre>
+</div>
+
+<p>If everything went well, you should see the default Phoenix landing page:</p>
+
+<p><img src="../images/phoenix-landing-page.png" height="250" width="350" /></p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>More info here: <a href="http://www.phoenixframework.org/docs/ecto-models">http://www.phoenixframework.org/docs/ecto-models</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+      <hr />
+      <footer role="contentinfo">
+        
+        <p class="byline"><strong>Installing Phoenix</strong> was published on <time datetime="2016-07-24T17:08:06-04:00">July 24, 2016</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
+  
+  </article>
+</div><!-- /#main -->
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+<!-- Add MathJax -->
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'bvosk'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+</body>
+</html>
