@@ -168,8 +168,8 @@ Phoenix installation guide, but I missed it in my first pass.</p>
 <p>Since I’m on Ubuntu, I’ll follow <a href="https://Nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions">these
 instructions</a> for Node.js v6:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-sudo apt-get install -y nodejs
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+<span class="gp">$ </span>sudo apt-get install -y nodejs
 </code></pre>
 </div>
 
@@ -200,7 +200,7 @@ sudo apt-get install -y nodejs
 
 <h2 id="create-an-ecto-repo">Create an Ecto repo</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mix ecto.create
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mix ecto.create
 </code></pre>
 </div>
 
@@ -227,7 +227,7 @@ terminal:
 in your postgreSQL configuration<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. Do this:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># Start the psql terminal</span>
-sudo -u postgres psql
+<span class="gp">$ </span>sudo -u postgres psql
 
 psql <span class="o">(</span>9.3.13<span class="o">)</span>
 Type <span class="s2">"help"</span> <span class="k">for </span>help.
@@ -239,7 +239,7 @@ Type <span class="s2">"help"</span> <span class="k">for </span>help.
 
 <h2 id="start-the-phoenix-application">Start the Phoenix application</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mix phoenix.server
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mix phoenix.server
 </code></pre>
 </div>
 
