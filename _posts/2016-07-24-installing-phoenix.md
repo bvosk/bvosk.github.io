@@ -114,6 +114,7 @@ postgres=# ALTER USER postgres WITH SUPERUSER;
 $ mix phoenix.server
 ```
 
-If everything went well, you should see the default Phoenix landing page:
+If everything went well, you should see the default Phoenix landing page when
+you point your browser to `localhost:4000`:
 
 <img src="../images/phoenix-landing-page.png" height="250" width="350">
