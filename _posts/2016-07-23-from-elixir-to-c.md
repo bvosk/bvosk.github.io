@@ -42,7 +42,7 @@ can - that they're usually right.
 ## Immutable Data and Purity
 
 All data is immutable in Elixir. In other words, a variable's value cannot
-change once it is assigned cannot change. Check it out:
+change once it is assigned. Check it out:
 
 ```elixir
 iex> name = "brian"
