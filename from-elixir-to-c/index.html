@@ -178,10 +178,10 @@ can - that they’re usually right.</p>
   </li>
 </ol>
 
-<h2 id="immutable-data-and-purity">Immutable Data and Purity</h2>
+<h2 id="immutable-data">Immutable data</h2>
 
 <p>All data is immutable in Elixir. In other words, a variable’s value cannot
-change once it is assigned cannot change. Check it out:</p>
+change once it is assigned. Check it out:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="n">iex</span><span class="o">&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="sd">"</span><span class="s2">brian"</span>
 <span class="sd">"</span><span class="s2">brian"</span>
@@ -197,12 +197,9 @@ didn’t. We performed a transformation on <code class="highlighter-rouge">name<
 The new string is a clone of <code class="highlighter-rouge">name</code>, except uppercase. It’s a subtle, but
 important difference.</p>
 
-<p>This behavior is typical in functional programming. Immutable
-data structures give rise to <em>pure</em> functions - so named because they are
-incapable of <em>tainting</em> the arguments passed to them. In a pure, functional
-language like Elixir, you never have to worry if a function will manipulate a
-variable you pass to it. This has the neat effect of making the
-code easier to conceptualize as well as easier to test.</p>
+<p>When all the data is immutable, you never have to worry if a function will 
+manipulate a variable you pass to it. This has the neat effect of making the 
+code easier to conceptualize.</p>
 
 <p>To demonstrate this point, take a look at this C code:</p>
 
@@ -214,7 +211,7 @@ code easier to conceptualize as well as easier to test.</p>
 
 <p>What’s the value of <code class="highlighter-rouge">name</code> after we call <code class="highlighter-rouge">some_function</code> on it? The only correct answer here is, “Who knows?” The developer is forced to go lookup the details of <code class="highlighter-rouge">some_function</code> to find out if it manipulates <code class="highlighter-rouge">name</code>.</p>
 
-<h2 id="data-transformations">Data Transformations</h2>
+<h2 id="data-transformations">Data transformations</h2>
 
 <p>Functional programming offers a different perspective about what a program
 ought to do. Let’s take a look at take a look at three programming paradigms and
@@ -257,10 +254,10 @@ left function as the first argument to right function. In this way, functions
 can be chained together endlessly and read naturally from left to right in the
 order that they’re applied.</p>
 
-<h2 id="other-differences">Other Differences</h2>
+<h2 id="other-differences">Other differences</h2>
 
 <p>There are plenty of other differences that I won’t get into. Elixir is
-garbage-collected, places a heavy emphasis on lists and recursion, and runs atop 
+garbage collected, places a heavy emphasis on lists and recursion, and runs atop 
 a virtual machine. These are significant, but the focus on data transformation
 rather than procedural execution is the most profound change.</p>
 

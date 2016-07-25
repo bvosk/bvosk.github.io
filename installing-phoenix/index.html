@@ -163,10 +163,11 @@ did to resolve the issues.</p>
 
 <p>Follow the <a href="https://nodejs.org/en/download/">Node.js download page</a>. <strong>Note that
 you need to install Node.js &gt;= 5.0.0</strong>. This is specified in the
-Phoenix installation guide, but I missed it in my first pass.</p>
+Phoenix installation guide, but I missed it in my first pass. I initially
+installed Node.js using <code class="highlighter-rouge">apt-get</code>, but that provides version that’s incompatible
+with Phoenix.</p>
 
-<p>Since I’m on Ubuntu, I’ll follow <a href="https://Nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions">these
-instructions</a> for Node.js v6:</p>
+<p>On Ubuntu, follow <a href="https://Nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions">these instructions</a> for Node.js v6:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 <span class="gp">$ </span>sudo apt-get install -y nodejs
@@ -204,7 +205,8 @@ instructions</a> for Node.js v6:</p>
 </code></pre>
 </div>
 
-<p>This step gave me some trouble. I received this output:</p>
+<p>Since I’m new to PostreSQL - and to databases in general - this step gave me some 
+trouble. I was greeted with this error:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>** (Mix) The database for Hello.Repo couldn't be created: FATAL
 (invalid_password): password authentication failed for user "postgres"
@@ -243,7 +245,8 @@ Type <span class="s2">"help"</span> <span class="k">for </span>help.
 </code></pre>
 </div>
 
-<p>If everything went well, you should see the default Phoenix landing page:</p>
+<p>If everything went well, you should see the default Phoenix landing page when
+you point your browser to <code class="highlighter-rouge">localhost:4000</code>:</p>
 
 <p><img src="../images/phoenix-landing-page.png" height="250" width="350" /></p>
 <div class="footnotes">
