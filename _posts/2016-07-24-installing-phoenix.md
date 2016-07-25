@@ -74,7 +74,7 @@ $ cd hello
 $ mix ecto.create
 ```
 
-Since I'm new to PostreSQL - and to databases in general - This step gave me some 
+Since I'm new to PostreSQL - and to databases in general - this step gave me some 
 trouble. I was greeted with this error:
 
     ** (Mix) The database for Hello.Repo couldn't be created: FATAL
