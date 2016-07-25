@@ -33,10 +33,11 @@ $ mix local.hex
 
 Follow the [Node.js download page](https://nodejs.org/en/download/). **Note that
 you need to install Node.js >= 5.0.0**. This is specified in the
-Phoenix installation guide, but I missed it in my first pass.
+Phoenix installation guide, but I missed it in my first pass. I initially
+installed Node.js using `apt-get`, but that provides version that's incompatible
+with Phoenix.
 
-Since I'm on Ubuntu, I'll follow [these
-instructions](https://Nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions) for Node.js v6:
+On Ubuntu, follow [these instructions](https://Nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions) for Node.js v6: 
 
 ```bash
 $ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
