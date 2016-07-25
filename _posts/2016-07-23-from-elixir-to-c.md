@@ -58,12 +58,9 @@ didn't. We performed a transformation on `name` which resulted in a new string.
 The new string is a clone of `name`, except uppercase. It's a subtle, but
 important difference.
 
-This behavior is typical in functional programming. Immutable
-data structures give rise to _pure_ functions - so named because they are
-incapable of _tainting_ the arguments passed to them. In a pure, functional
-language like Elixir, you never have to worry if a function will manipulate a
-variable you pass to it. This has the neat effect of making the
-code easier to conceptualize as well as easier to test.
+When all the data is immutable, you never have to worry if a function will 
+manipulate a variable you pass to it. This has the neat effect of making the 
+code easier to conceptualize.
 
 To demonstrate this point, take a look at this C code:
 
