@@ -39,7 +39,7 @@ so. Not unlike a college freshman who finds herself free at last from the superv
 of her parents. At some point she realizes - perhaps while keeled over a garbage 
 can - that they're usually right.
 
-## Immutable Data and Purity
+## Immutable Data
 
 All data is immutable in Elixir. In other words, a variable's value cannot
 change once it is assigned. Check it out:
