@@ -74,7 +74,8 @@ $ cd hello
 $ mix ecto.create
 ```
 
-This step gave me some trouble. I received this output:
+Since I'm new to PostreSQL - and to databases in general - This step gave me some 
+trouble. I was greeted with this error:
 
     ** (Mix) The database for Hello.Repo couldn't be created: FATAL
     (invalid_password): password authentication failed for user "postgres"
