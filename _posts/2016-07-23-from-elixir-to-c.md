@@ -115,3 +115,12 @@ That's better! The pipe operator simply passes the return value of the
 left function as the first argument to right function. In this way, functions
 can be chained together endlessly and read naturally from left to right in the
 order that they're applied.
+
+## Other Differences
+
+There are plenty of other differences that I won't get into. Elixir is
+garbage-collected, places a heavy emphasis on lists and recursion, and runs atop 
+a virtual machine. These are significant, but the focus on data transformation
+rather than procedural execution is the most profound change.
+
+I'm having a ball with Elixir!
