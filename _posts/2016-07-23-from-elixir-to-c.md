@@ -39,7 +39,7 @@ so. Not unlike a college freshman who finds herself free at last from the superv
 of her parents. At some point she realizes - perhaps while keeled over a garbage 
 can - that they're usually right.
 
-## Immutable Data
+## Immutable data
 
 All data is immutable in Elixir. In other words, a variable's value cannot
 change once it is assigned. Check it out:
@@ -72,7 +72,7 @@ printf("Hello, %s!", name);
 
 What's the value of `name` after we call `some_function` on it? The only correct answer here is, "Who knows?" The developer is forced to go lookup the details of `some_function` to find out if it manipulates `name`.
 
-## Data Transformations
+## Data transformations
 
 Functional programming offers a different perspective about what a program
 ought to do. Let's take a look at take a look at three programming paradigms and
@@ -113,7 +113,7 @@ left function as the first argument to right function. In this way, functions
 can be chained together endlessly and read naturally from left to right in the
 order that they're applied.
 
-## Other Differences
+## Other differences
 
 There are plenty of other differences that I won't get into. Elixir is
 garbage collected, places a heavy emphasis on lists and recursion, and runs atop 
