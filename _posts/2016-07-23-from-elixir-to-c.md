@@ -116,7 +116,7 @@ order that they're applied.
 ## Other Differences
 
 There are plenty of other differences that I won't get into. Elixir is
-garbage-collected, places a heavy emphasis on lists and recursion, and runs atop 
+garbage collected, places a heavy emphasis on lists and recursion, and runs atop 
 a virtual machine. These are significant, but the focus on data transformation
 rather than procedural execution is the most profound change.
 
