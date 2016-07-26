@@ -84,7 +84,7 @@ try to boil their philosophies down to a single sentence:
 
 So Elixir - taking a functional approach - touts data transformation, but all
 data is immutable. After the first example, you may be thinking that creating copies of data can
-get syntactically cumbersome. I'd agree. One can imagine countless lines of code that look like this:
+get syntactically cumbersome. One can imagine countless lines of code that look like this:
 
 ```
 function3(function2(function3(data)))
