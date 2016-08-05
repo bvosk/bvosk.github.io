@@ -7,7 +7,9 @@ tags: [elixir]
 comments: true
 ---
 
-Since my last post I've been playing around with [Elixir](http://elixir-lang.org/). If you're interested in learning about it, I recommend starting with the [official getting started guide](http://elixir-lang.org/getting-started/introduction.html).
+Since my last post I've been playing around with [Elixir](http://elixir-lang.org/). 
+If you're interested in learning about it, I recommend starting with the 
+[official getting started guide](http://elixir-lang.org/getting-started/introduction.html).
 
 Before we dive into some things I found interesting about Elixir, let's
 discuss the most notable differences between Elixir and C:
@@ -22,7 +24,11 @@ While this is important to keep in mind, it's difficult to isolate this
 difference from the rest. I mention this mainly to give a tip of the hat to C
 before I say some not-so-nice things about it.
 
-    [^1]: There's a little more to this. [According to Wikipedia](https://en.wikipedia.org/wiki/C_(programming_language)#History), C was being used to develop Unix in 1972 and the famous K&R book was published in 1978. It wasn't until 1989 that C was formally standardized as ANSI C, but it would be disingenuous to suggest that its use wasn't already widespread at that time.
+    [^1]: There's a little more to this. [According to Wikipedia](https://en.wikipedia.org/wiki/C_(programming_language)#History), 
+C was being used to develop Unix in 1972 and the famous K&R book was published 
+in 1978. It wasn't until 1989 that C was formally standardized as ANSI C, but it 
+would be disingenuous to suggest that its use wasn't already widespread at that 
+time.
 
 2. Elixir is functional
 
@@ -70,7 +76,9 @@ some_function(name);
 printf("Hello, %s!", name);
 ```
 
-What's the value of `name` after we call `some_function` on it? The only correct answer here is, "Who knows?" The developer is forced to go lookup the details of `some_function` to find out if it manipulates `name`.
+What's the value of `name` after we call `some_function` on it? The only correct 
+answer here is, "Who knows?" The developer is forced to go lookup the details of 
+`some_function` to find out if it manipulates `name`.
 
 ## Data transformations
 
@@ -83,8 +91,9 @@ try to boil their philosophies down to a single sentence:
 - **Functional**: _Programs transform data_
 
 So Elixir - taking a functional approach - touts data transformation, but all
-data is immutable. After the first example, you may be thinking that creating copies of data can
-get syntactically cumbersome. One can imagine countless lines of code that look like this:
+data is immutable. After the first example, you may be thinking that creating 
+copies of data can get syntactically cumbersome. One can imagine countless lines 
+of code that look like this:
 
 ```
 function3(function2(function3(data)))
@@ -99,7 +108,9 @@ iex> Enum.join(String.split(numbers), "+")
 "one+two+three"
 ```
 
-But there's a better way. To support the precepts of functional programming while maintaining readability, Elixir provides special syntax to perform data transformations. Here's the same code using Elixir's pipe operator, `|>`:
+But there's a better way. To support the precepts of functional programming 
+while maintaining readability, Elixir provides special syntax to perform data 
+transformations. Here's the same code using Elixir's pipe operator, `|>`:
 
 ```elixir
 iex> numbers = "one two three"
