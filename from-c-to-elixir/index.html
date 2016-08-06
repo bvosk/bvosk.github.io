@@ -160,10 +160,6 @@ While this is important to keep in mind, it’s difficult to isolate this
 difference from the rest. I mention this mainly to give a tip of the hat to C
 before I say some not-so-nice things about it.</p>
 
-    <p>C was being used to develop Unix in 1972 and the famous K&amp;R book was published 
-in 1978. It wasn’t until 1989 that C was formally standardized as ANSI C, but it 
-would be disingenuous to suggest that its use wasn’t already widespread at that 
-time.</p>
   </li>
   <li>
     <p>Elixir is functional</p>
@@ -178,9 +174,7 @@ most interesting divergence from C, which takes an imperative approach.</p>
     <p>Dynamically typed languages are probably familiar to most at this point,
 popularized by the rise of scripting languages like Python, JavaScript, and
 Ruby. A C programmer will find this liberating, but at times dangerously
-so. Not unlike a college freshman who finds herself free at last from the supervision
-of her parents. At some point she realizes - perhaps while keeled over a garbage 
-can - that they’re usually right.</p>
+so.</p>
   </li>
 </ol>
 
@@ -265,6 +259,53 @@ left function as the first argument to right function. In this way, functions
 can be chained together endlessly and read naturally from left to right in the
 order that they’re applied.</p>
 
+<h2 id="higher-order-functions">Higher Order Functions</h2>
+
+<p>In Elixir, functions are passed all over the place. It can be a confusing
+at first, but the benefits are clear once you get familiar with the pattern.
+It allows you to more with less, and makes your code more readable. Let’s 
+explore a simple example.</p>
+
+<p>Say you want to take a list of numbers and return a list of those numbers
+multiplied by two. Here’s what that might look like in C:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">uint16_t</span><span class="o">*</span> <span class="nf">times_two</span><span class="p">(</span><span class="kt">uint16_t</span><span class="o">*</span> <span class="n">numbers</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">length</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">uint16_t</span> <span class="n">i</span><span class="p">;</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="p">}</span>
+
+ <span class="k">return</span> <span class="n">numbers</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>It’s a lot of work for such a common pattern. Namely iterate over a
+bunch of items and do something to each one. In a real life you’re probably 
+doing something more meaningful than multiplying them by two, but the general 
+case is the same. Here’s what that would look like in Elixir:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="n">times_two</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="k">do</span>
+  <span class="n">numbers</span>
+  <span class="o">|&gt;</span> <span class="no">Enum</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">fn</span> <span class="n">number</span> <span class="o">-&gt;</span> <span class="n">number</span> <span class="o">*</span> <span class="m">2</span> <span class="k">end</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>This may be unfamiliar, so let’s break it down. We pipe the argument
+<code class="highlighter-rouge">numbers</code> into an Elixir function called <code class="highlighter-rouge">Enum.map</code>. <code class="highlighter-rouge">Enum.map</code> is a powerful,
+but simple function that applies a function (passed as an argument) to every 
+item in a container. Then we define a function which takes an argument called 
+<code class="highlighter-rouge">number</code> and returns <code class="highlighter-rouge">number * 2</code>.</p>
+
+<p>This pattern and others like it are commonplace in Elixir. There are similar
+functions defined in the <code class="highlighter-rouge">Enum</code> module like <code class="highlighter-rouge">filter</code>, <code class="highlighter-rouge">all?</code>, and <code class="highlighter-rouge">reduce</code>
+which make common design patterns very easy to implement. They allow you to
+define the unique aspect of your code, but handle the repetitive parts for you.
+When another developer reads your code, it’s far easier to understand what’s
+going on because they’re immediately familiar with the pattern being employed.</p>
+
 <h2 id="other-differences">Other differences</h2>
 
 <p>There are plenty of other differences that I won’t get into. Elixir is
@@ -276,7 +317,7 @@ rather than procedural execution is the most profound change.</p>
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>There’s a little more to this. <a href="https://en.wikipedia.org/wiki/C_(programming_language)#History">According to Wikipedia</a>, <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>There’s a little more to this. <a href="https://en.wikipedia.org/wiki/C_(programming_language)#History">According to Wikipedia</a>, C was being used to develop Unix in 1972 and the famous K&amp;R book was published in 1978. It wasn’t until 1989 that C was formally standardized as ANSI C, but it would be disingenuous to suggest that its use wasn’t already widespread at that time. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

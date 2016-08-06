@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2016-08-05T00:04:27-04:00</updated>
+<updated>2016-08-05T23:10:52-04:00</updated>
 <id>/</id>
 <author>
   <name>Brian Voskerijian</name>
@@ -177,10 +177,6 @@ While this is important to keep in mind, it’s difficult to isolate this
 difference from the rest. I mention this mainly to give a tip of the hat to C
 before I say some not-so-nice things about it.&lt;/p&gt;
 
-    &lt;p&gt;C was being used to develop Unix in 1972 and the famous K&amp;amp;R book was published 
-in 1978. It wasn’t until 1989 that C was formally standardized as ANSI C, but it 
-would be disingenuous to suggest that its use wasn’t already widespread at that 
-time.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Elixir is functional&lt;/p&gt;
@@ -195,9 +191,7 @@ most interesting divergence from C, which takes an imperative approach.&lt;/p&gt
     &lt;p&gt;Dynamically typed languages are probably familiar to most at this point,
 popularized by the rise of scripting languages like Python, JavaScript, and
 Ruby. A C programmer will find this liberating, but at times dangerously
-so. Not unlike a college freshman who finds herself free at last from the supervision
-of her parents. At some point she realizes - perhaps while keeled over a garbage 
-can - that they’re usually right.&lt;/p&gt;
+so.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -282,6 +276,53 @@ left function as the first argument to right function. In this way, functions
 can be chained together endlessly and read naturally from left to right in the
 order that they’re applied.&lt;/p&gt;
 
+&lt;h2 id=&quot;higher-order-functions&quot;&gt;Higher Order Functions&lt;/h2&gt;
+
+&lt;p&gt;In Elixir, functions are passed all over the place. It can be a confusing
+at first, but the benefits are clear once you get familiar with the pattern.
+It allows you to more with less, and makes your code more readable. Let’s 
+explore a simple example.&lt;/p&gt;
+
+&lt;p&gt;Say you want to take a list of numbers and return a list of those numbers
+multiplied by two. Here’s what that might look like in C:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;uint16_t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;times_two&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;uint16_t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;uint16_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;uint16_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+ &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It’s a lot of work for such a common pattern. Namely iterate over a
+bunch of items and do something to each one. In a real life you’re probably 
+doing something more meaningful than multiplying them by two, but the general 
+case is the same. Here’s what that would look like in Elixir:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;times_two&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This may be unfamiliar, so let’s break it down. We pipe the argument
+&lt;code class=&quot;highlighter-rouge&quot;&gt;numbers&lt;/code&gt; into an Elixir function called &lt;code class=&quot;highlighter-rouge&quot;&gt;Enum.map&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;Enum.map&lt;/code&gt; is a powerful,
+but simple function that applies a function (passed as an argument) to every 
+item in a container. Then we define a function which takes an argument called 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;number&lt;/code&gt; and returns &lt;code class=&quot;highlighter-rouge&quot;&gt;number * 2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This pattern and others like it are commonplace in Elixir. There are similar
+functions defined in the &lt;code class=&quot;highlighter-rouge&quot;&gt;Enum&lt;/code&gt; module like &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;all?&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;reduce&lt;/code&gt;
+which make common design patterns very easy to implement. They allow you to
+define the unique aspect of your code, but handle the repetitive parts for you.
+When another developer reads your code, it’s far easier to understand what’s
+going on because they’re immediately familiar with the pattern being employed.&lt;/p&gt;
+
 &lt;h2 id=&quot;other-differences&quot;&gt;Other differences&lt;/h2&gt;
 
 &lt;p&gt;There are plenty of other differences that I won’t get into. Elixir is
@@ -293,7 +334,7 @@ rather than procedural execution is the most profound change.&lt;/p&gt;
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;There’s a little more to this. &lt;a href=&quot;https://en.wikipedia.org/wiki/C_(programming_language)#History&quot;&gt;According to Wikipedia&lt;/a&gt;, &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;There’s a little more to this. &lt;a href=&quot;https://en.wikipedia.org/wiki/C_(programming_language)#History&quot;&gt;According to Wikipedia&lt;/a&gt;, C was being used to develop Unix in 1972 and the famous K&amp;amp;R book was published in 1978. It wasn’t until 1989 that C was formally standardized as ANSI C, but it would be disingenuous to suggest that its use wasn’t already widespread at that time. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
