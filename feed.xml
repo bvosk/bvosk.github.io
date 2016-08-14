@@ -4,13 +4,110 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2016-08-13T22:46:48-04:00</updated>
+<updated>2016-08-14T01:17:30-04:00</updated>
 <id>/</id>
 <author>
   <name>Brian Voskerijian</name>
   <uri>/</uri>
   <email>brian@bvosk.xyz</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Modern Money]]></title>
+  <link rel="alternate" type="text/html" href="/modern-money/" />
+  <id>/modern-money</id>
+  <published>2016-08-13T23:33:09-04:00</published>
+  <updated>2016-08-13T23:33:09-04:00</updated>
+  <author>
+    <name>Brian Voskerijian</name>
+    <uri></uri>
+    <email>brian@bvosk.xyz</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;A few months ago I was tasked with giving a 10 minute presentation to some of my
+coworkers to develop my presentation skills. It’s a part of the leadership
+training offered in the rotational program we’re in. As the focus was
+on presentation skills rather than subject matter, the choice of content was
+completely up to me.&lt;/p&gt;
+
+&lt;p&gt;When I got to thinking about what I would present, the answer became
+increasingly clear. I had been given 10 uninterrupted minutes of attention from
+a complete social group of mine, and I wasn’t going to let that go to waste.
+This was an opportunity to make an impact! But what’s the impact that I wanted 
+to make?&lt;/p&gt;
+
+&lt;h2 id=&quot;solve-a-problem&quot;&gt;Solve a problem&lt;/h2&gt;
+
+&lt;p&gt;Anyone who knows me well will tell you that I love to complain.
+It’s not the most desirable trait, but I’ve come to
+accept that it’s part of how my brain works. This skeptical tendency isn’t
+without its drawbacks, but at its best it’s helpful in identifying
+solutions to problems that others don’t see or won’t address. One such problem
+has resurfaced over and over again in all my social circles; exchanging cash.&lt;/p&gt;
+
+&lt;p&gt;Part of what makes this problem so particularly annoying is that good solutions
+already exist to address it. Apps like Square and Venmo are somewhat
+popular, but my social groups have yet to commit to one
+solution with any deliberation. This was my chance to do something about
+that! So when I thought of what to talk about during my 10 minutes on stage, this
+problem quickly became the frontrunner.&lt;/p&gt;
+
+&lt;h2 id=&quot;slides&quot;&gt;Slides&lt;/h2&gt;
+
+&lt;p&gt;Below you will find the slides that I presented to my colleagues/friends. 
+I am sharing this in the hopes that you find it useful in convincing your social
+group to commit to one digital payment system. I know not everyone will have my
+unique opportunity to present with a visual aid, but I think the structure of
+the proposal was effective. With tongue in cheek, this is my &lt;a href=&quot;http://www.goodreads.com/quotes/705426-each-time-a-man-stands-up-for-an-ideal-or&quot;&gt;“tiny ripple of hope”&lt;/a&gt; 
+Here’s how it helps you make your case:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Provides an example of the problem in action using a split restaurant bill&lt;/li&gt;
+  &lt;li&gt;Summarizes what a digital payment system is&lt;/li&gt;
+  &lt;li&gt;Lists pros and cons&lt;/li&gt;
+  &lt;li&gt;Relates the network effect to this problem&lt;/li&gt;
+  &lt;li&gt;Lists popular options&lt;/li&gt;
+  &lt;li&gt;Urges the group to form a consensus and commit to one digital payment system&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tips-for-success&quot;&gt;Tips for success&lt;/h2&gt;
+
+&lt;p&gt;Here are some tips that I’ve gathered during my ongoing crusade:&lt;/p&gt;
+
+&lt;h3 id=&quot;make-the-case-for-digital-payment-systems-not-one-in-particular&quot;&gt;Make the case for digital payment systems, not one in particular&lt;/h3&gt;
+
+&lt;p&gt;Don’t let the details of which application to use foil the progress of
+switching to &lt;em&gt;any&lt;/em&gt; digital payment system. Going from cash to a suboptimal
+digital payment system is way better than never making the switch because you
+got stonewalled by someone who wasn’t hooked on your particular preference.&lt;/p&gt;
+
+&lt;h3 id=&quot;address-legitimate-concerns-directly&quot;&gt;Address legitimate concerns directly&lt;/h3&gt;
+
+&lt;p&gt;I have found that the most popular reasons for not using a digital payment
+system is laziness and a lack of group coordination, but some have legitimate reasons
+for being apprehensive. Talk through these concerns, don’t shy away from them.&lt;/p&gt;
+
+&lt;h3 id=&quot;dont-take-credit&quot;&gt;Don’t take credit&lt;/h3&gt;
+
+&lt;p&gt;As some of your friends take the plunge into digital payment systems, you may
+feel an urge to celebrate your success. You can party in your thoughts, but
+don’t do it publicly. Celebrate the group’s new enlightened users and make sure
+they’re enjoying this newfound convenience.&lt;/p&gt;
+
+&lt;h3 id=&quot;be-persistent&quot;&gt;Be persistent&lt;/h3&gt;
+
+&lt;p&gt;It’s difficult to find a balance between persistence and annoyance, but this
+won’t happen in a day. Keep up the good work!&lt;/p&gt;
+
+&lt;p&gt;Good luck. With a little hope, we can sweep down the mightiest walls of cash and
+enjoy the bright future of digital payments sooner rather than later!&lt;/p&gt;
+
+&lt;iframe src=&quot;https://docs.google.com/presentation/d/1ClpIdoPhFTcaiVKb15fgy0WDGzJnJyqNYGaiuVB9pPI/embed?start=false&amp;amp;loop=false&amp;amp;delayms=3000&quot; frameborder=&quot;0&quot; width=&quot;480&quot; height=&quot;389&quot; allowfullscreen=&quot;true&quot; mozallowfullscreen=&quot;true&quot; webkitallowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;
+
+    &lt;p&gt;&lt;a href=&quot;/modern-money/&quot;&gt;Modern Money&lt;/a&gt; was originally published by Brian Voskerijian at &lt;a href=&quot;&quot;&gt;On Ice&lt;/a&gt; on August 13, 2016.&lt;/p&gt;
+  </content>
+</entry>
 
 
 <entry>
